@@ -24,14 +24,17 @@ con.connect(function (err) {
     console.log(result);
   });
 });
-
-app.get("/test", (req, res) => {
+let domain = process.env.PRODUCTION_DOMAIN
+  ? process.env.PRODUCTION_DOMAIN
+  : "http://localhost:3001";
+app.get(`${domain}/test`, (req, res) => {
   let results = con.query("select * from test01", function (err, result) {
     if (err) throw err;
     console.log(result);
     res.json({ data: result });
   });
 });
-app.listen(3001, () => {
-  console.log("listening on");
+const port = process.env.PORT ? process.env.PORT : 3001;
+app.listen(port, () => {
+  console.log(`listening on ${port}`);
 });
