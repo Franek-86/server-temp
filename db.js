@@ -32,6 +32,6 @@ app.get("/test", (req, res) => {
     res.json({ data: result });
   });
 });
-app.listen(1000, () => {
+app.listen(3001, () => {
   console.log("listening on");
 });
