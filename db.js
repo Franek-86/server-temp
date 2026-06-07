@@ -25,13 +25,13 @@ con.connect(function (err) {
   });
 });
 
-app.get("/test", (req, res) => {
+app.get("https://server-temp-2r4v.onrender.com/test", (req, res) => {
   let results = con.query("select * from test01", function (err, result) {
     if (err) throw err;
     console.log(result);
     res.json({ data: result });
   });
 });
-app.listen(3001, () => {
+app.listen(1000, () => {
   console.log("listening on");
 });
