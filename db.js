@@ -25,7 +25,7 @@ con.connect(function (err) {
   });
 });
 
-app.get("https://server-temp-2r4v.onrender.com/test", (req, res) => {
+app.get("/test", (req, res) => {
   let results = con.query("select * from test01", function (err, result) {
     if (err) throw err;
     console.log(result);
