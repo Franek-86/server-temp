@@ -24,9 +24,7 @@ con.connect(function (err) {
     console.log(result);
   });
 });
-let domain = process.env.PRODUCTION_DOMAIN
-  ? process.env.PRODUCTION_DOMAIN
-  : "http://localhost:3001";
+
 app.get(`/test`, (req, res) => {
   let results = con.query("select * from test01", function (err, result) {
     if (err) throw err;
