@@ -28,9 +28,20 @@ con.connect(function (err) {
 app.get(`/test`, (req, res) => {
   let results = con.query("select * from test01", function (err, result) {
     if (err) throw err;
-    console.log(result);
     res.json({ data: result });
   });
+});
+app.get(`/test/search`, (req, res) => {
+  console.log("here", req._parsedUrl.query);
+  let test = req._parsedUrl.query;
+  let results = con.query(
+    `select * from test01 where domain='${test}'`,
+    function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.json({ data: result });
+    },
+  );
 });
 const port = process.env.PORT ? process.env.PORT : 3001;
 app.listen(port, () => {
